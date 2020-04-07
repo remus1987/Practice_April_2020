@@ -107,10 +107,12 @@ namespace Practice_April2020
         }
 
         //5
-        public void PrintArrayUniqueElem()
+        public void CountArrayDuplicates()
         {
-            int i, n;
+            int i, j, n, mm=1;
+            int totalDuplicates = 0;
             int[] ary = new int[100];
+            int[] aryRef = new int[100];
 
             Console.WriteLine("Input the number of elements to be stored: ");
             n = Convert.ToInt32(Console.ReadLine());
@@ -121,12 +123,82 @@ namespace Practice_April2020
                 Console.Write("element {0}: ", i);
                 ary[i] = Convert.ToInt32(Console.ReadLine());
             }
-            Console.Write("\nThe unique elements found in the array are: ");
-            for (i != ; i < length; i++)
+            // mark the elements are duplicate
+            for (i = 0; i < n; i++)
             {
-
+                for (j = 0; j < n; j++)
+                {
+                    if (ary[i] == ary[j])
+                    {
+                        aryRef[j] = mm;
+                        mm++;
+                    }
+                }
+                mm = 1;
             }
+            // prints the array
+            for (i = 0; i < n; i++)
+            {
+                if (aryRef[i] == 2)
+                {
+                    totalDuplicates++;
+                }
+            }
+            Console.WriteLine("Total number of duplicate elements found in the array is : {0}", totalDuplicates);
         }
 
+        //6
+        public void PrintUniqueElements()
+        {
+            int i, j, k, n;
+            int counter = 0;
+            int[] ary = new int[100];
+
+            Console.Write("Input the number of elements: ");
+            n = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Input {0} elements in th array: \n", n);
+            for (i = 0; i < n; i++)
+            {
+                Console.Write("element - {0} : ", i);
+                ary[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            // check duplicate elements in the array
+            Console.Write("The unique elements found in the array are : \n");
+            for (i = 0; i < n; i++)
+            {
+                counter = 0;
+           // Check duplicate before the current position and increase counter by 1 if found
+                for (j = 0; j < i-1; j++)
+                {
+                    // Increment the counter when the search value is duplicate
+                    if (ary[i] == ary[j])
+                    {
+                        counter++;
+                    }
+                }
+           // Check duplicate after the current position and increase counter by 1 if found
+                for (k = i + 1; k < n; k++)
+                {
+                    if (ary[i] == ary[k])
+                    {
+                        counter++;
+                    }
+                    // Duplicate numbers next to each other
+                    if (ary[i] == ary[i+1])
+                    {
+                        i++;
+                    }
+                }
+            
+            // print the value of the current position of the array as unique value when counter remain contains its initial value
+                if (counter == 0)
+                {
+                    Console.Write("{0} ", ary[i]);
+                }
+            }
+            Console.Write("\n\n");
+           
+        }
     }
 }
