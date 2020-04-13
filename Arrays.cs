@@ -336,5 +336,8 @@ namespace Practice_April2020
             Console.Write("Maximum element is {0}\n", max);
             Console.Write("Minimum element is {0}\n", min);
         }
+
+        
+
     }
 }

@@ -128,8 +128,6 @@ namespace Practice_April2020
             }
             Console.Write("The Highest frequency of character '{0}' is" +
                 " appearing for number of times : {1} \n", (char)max, ch_fre[max]);
-
-
         }
 
         // 11
@@ -159,5 +157,69 @@ namespace Practice_April2020
             }
             Console.WriteLine("\n");
         }
+
+        // 12
+        public void BubbleSort_Strings()
+        {
+            string[] strings;
+            string temp;
+            int n, l;
+            Console.WriteLine("Input number of strings: ");
+            n = Convert.ToInt32(Console.ReadLine());
+
+            strings = new string[n];
+            Console.WriteLine("Input {0} strings below: ");
+
+            for (int i = 0; i < n; i++)
+            {
+                strings[i] = Console.ReadLine();
+            }
+
+            l = strings.Length;
+            for (int i = 0; i < l; i++)
+            {
+                for (int j = 0; j < l-1; j++)
+                {
+                    if (strings[j].CompareTo(strings[j+1]) > 0)
+                    {
+                        temp = strings[j];
+                        strings[j] = strings[j + 1];
+                        strings[j + 1] = temp;
+                    }
+                }
+            }
+            Console.Write("\nAfter sorting the array appears like: \n");
+            for (int i = 0; i < l; i++)
+            {
+                Console.Write(strings[i] + " ");
+            }
+        }
+
+        // 16
+        public static void Check_User_Password()
+        {
+            string username, password;
+            int n = 0;
+
+            do
+            {
+                Console.WriteLine("Input a username: ");
+                username = Console.ReadLine();
+                Console.WriteLine("Input a password: ");
+                password = Console.ReadLine();
+                if (username != "abcd" || password != "1234")
+                    n++;
+                else
+                    n = 1;
+            }
+            while ((username != "abcd" || password != "1234") && n != 3);
+            if (n == 3)
+                Console.Write("\nLogin attempt 3 or more times. Try later\n");
+            else
+                Console.Write("\nThe password entered successfully !");
+        }
+
+        
+
     }
 }
